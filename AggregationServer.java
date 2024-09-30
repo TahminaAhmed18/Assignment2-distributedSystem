@@ -37,7 +37,7 @@ public class AggregationServer {
                 new Thread(new ClientHandler(clientSocket)).start();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error while starting server: " + e.getMessage());
         }
     }
 
@@ -63,10 +63,11 @@ public class AggregationServer {
                 } else {
                     out.println("HTTP/1.1 400 Bad Request");
                     out.println();
+                    System.err.println("Received an invalid request: " + request);
                 }
 
             } catch (IOException e) {
-                e.printStackTrace();
+                System.err.println("Error handling client request: " + e.getMessage());
             }
         }
 
@@ -76,8 +77,18 @@ public class AggregationServer {
             try {
                 StringBuilder jsonData = new StringBuilder();
                 String line;
+                boolean hasContent = false;
+
                 while ((line = in.readLine()) != null && !line.isEmpty()) {
                     jsonData.append(line);
+                    hasContent = true;
+                }
+
+                if (!hasContent) {
+                    out.println("HTTP/1.1 204 No Content");
+                    out.println();
+                    System.err.println("PUT request received with no content.");
+                    return;
                 }
 
                 // Parse the JSON data into a WeatherData object
@@ -86,6 +97,7 @@ public class AggregationServer {
                 if (weatherData == null || weatherData.getId() == null) {
                     out.println("HTTP/1.1 400 Bad Request");
                     out.println();
+                    System.err.println("Invalid or missing weather data ID.");
                     return;
                 }
 
@@ -107,8 +119,9 @@ public class AggregationServer {
             } catch (JsonSyntaxException e) {
                 out.println("HTTP/1.1 500 Internal Server Error");
                 out.println();
+                System.err.println("JSON parsing error: " + e.getMessage());
             } catch (IOException e) {
-                e.printStackTrace();
+                System.err.println("Error processing PUT request: " + e.getMessage());
             }
         }
 
@@ -134,7 +147,7 @@ public class AggregationServer {
                 writer.newLine();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error saving weather data to file: " + e.getMessage());
         }
     }
 
@@ -153,7 +166,7 @@ public class AggregationServer {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error loading weather data from file: " + e.getMessage());
         }
     }
 
@@ -164,7 +177,7 @@ public class AggregationServer {
         private long timestamp;
 
         public WeatherData(String data, int lamportTimestamp, long timestamp) {
-            // You can extract the "id" field from the "data" string using the JSON parser
+            // Extract the "id" field from the "data" string using the JSON parser
             this.id = extractIdFromData(data);
             this.data = data;
             this.lamportTimestamp = lamportTimestamp;
