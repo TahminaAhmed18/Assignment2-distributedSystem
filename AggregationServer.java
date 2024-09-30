@@ -8,7 +8,10 @@ import com.google.gson.JsonSyntaxException;
 public class AggregationServer {
     private static final String STORAGE_FILE = "weather_data_store.txt";
     private static Map<String, WeatherData> weatherDataStore = new ConcurrentHashMap<>();
-    private static LamportClock lamportClock = new LamportClock();
+
+    // Adding an identifier for LamportClock
+    private static LamportClock lamportClock = new LamportClock("AggregationServer");
+
     private static final long EXPIRATION_TIME_MS = 30000; // 30 seconds
     private static final Gson gson = new Gson();  // Using Gson for JSON handling
 
