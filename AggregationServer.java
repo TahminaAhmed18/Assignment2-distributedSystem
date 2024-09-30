@@ -2,12 +2,15 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 import java.util.concurrent.*;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 public class AggregationServer {
     private static final String STORAGE_FILE = "weather_data_store.txt";
     private static Map<String, WeatherData> weatherDataStore = new ConcurrentHashMap<>();
     private static LamportClock lamportClock = new LamportClock();
     private static final long EXPIRATION_TIME_MS = 30000; // 30 seconds
+    private static final Gson gson = new Gson();  // Using Gson for JSON handling
 
     public static void main(String[] args) {
         int port = 4567;
@@ -59,6 +62,7 @@ public class AggregationServer {
                     handleGetRequest(out);
                 } else {
                     out.println("HTTP/1.1 400 Bad Request");
+                    out.println();
                 }
 
             } catch (IOException e) {
@@ -66,27 +70,55 @@ public class AggregationServer {
             }
         }
 
-        private void handlePutRequest(BufferedReader in, PrintWriter out) throws IOException {
+        private void handlePutRequest(BufferedReader in, PrintWriter out) {
             lamportClock.update();
 
-            StringBuilder jsonData = new StringBuilder();
-            String line;
-            while ((line = in.readLine()) != null && !line.isEmpty()) {
-                jsonData.append(line);
+            try {
+                StringBuilder jsonData = new StringBuilder();
+                String line;
+                while ((line = in.readLine()) != null && !line.isEmpty()) {
+                    jsonData.append(line);
+                }
+
+                // Parse the JSON data into a WeatherData object
+                WeatherData weatherData = gson.fromJson(jsonData.toString(), WeatherData.class);
+
+                if (weatherData == null || weatherData.getId() == null) {
+                    out.println("HTTP/1.1 400 Bad Request");
+                    out.println();
+                    return;
+                }
+
+                // Update the weather data store
+                boolean isNewEntry = !weatherDataStore.containsKey(weatherData.getId());
+                weatherDataStore.put(weatherData.getId(), new WeatherData(
+                        jsonData.toString(), lamportClock.getTime(), System.currentTimeMillis()
+                ));
+
+                saveWeatherDataToFile();
+
+                if (isNewEntry) {
+                    out.println("HTTP/1.1 201 Created");
+                } else {
+                    out.println("HTTP/1.1 200 OK");
+                }
+                out.println();
+
+            } catch (JsonSyntaxException e) {
+                out.println("HTTP/1.1 500 Internal Server Error");
+                out.println();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-            // Parse the JSON (you would use a proper parser here)
-            String id = parseIdFromJson(jsonData.toString());
-
-            weatherDataStore.put(id, new WeatherData(jsonData.toString(), lamportClock.getTime(), System.currentTimeMillis()));
-            saveWeatherDataToFile();
-            out.println("HTTP/1.1 200 OK");
         }
 
         private void handleGetRequest(PrintWriter out) {
             out.println("HTTP/1.1 200 OK");
             out.println("Content-Type: application/json");
-            out.println(weatherDataStore.toString()); // Replace with proper JSON output
+            out.println();
+
+            String jsonResponse = gson.toJson(weatherDataStore.values());
+            out.println(jsonResponse);
         }
     }
 
@@ -98,7 +130,7 @@ public class AggregationServer {
     private static void saveWeatherDataToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(STORAGE_FILE))) {
             for (Map.Entry<String, WeatherData> entry : weatherDataStore.entrySet()) {
-                writer.write(entry.getKey() + ":" + entry.getValue().toString());
+                writer.write(gson.toJson(entry.getValue()));
                 writer.newLine();
             }
         } catch (IOException e) {
@@ -111,30 +143,36 @@ public class AggregationServer {
         if (!file.exists()) {
             return;
         }
+
         try (BufferedReader reader = new BufferedReader(new FileReader(STORAGE_FILE))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(":");
-                weatherDataStore.put(parts[0], new WeatherData(parts[1], lamportClock.getTime(), System.currentTimeMillis()));
+                WeatherData weatherData = gson.fromJson(line, WeatherData.class);
+                if (weatherData != null && weatherData.getId() != null) {
+                    weatherDataStore.put(weatherData.getId(), weatherData);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static String parseIdFromJson(String json) {
-        return "IDS60901"; // Example static ID, replace with real JSON parsing
-    }
-
     static class WeatherData {
+        private String id;
         private String data;
         private int lamportTimestamp;
         private long timestamp;
 
         public WeatherData(String data, int lamportTimestamp, long timestamp) {
+            // You can extract the "id" field from the "data" string using the JSON parser
+            this.id = extractIdFromData(data);
             this.data = data;
             this.lamportTimestamp = lamportTimestamp;
             this.timestamp = timestamp;
+        }
+
+        public String getId() {
+            return id;
         }
 
         public long getTimestamp() {
@@ -144,6 +182,11 @@ public class AggregationServer {
         @Override
         public String toString() {
             return data;
+        }
+
+        private String extractIdFromData(String data) {
+            WeatherData parsedData = gson.fromJson(data, WeatherData.class);
+            return parsedData.getId();
         }
     }
 }
