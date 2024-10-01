@@ -1,6 +1,7 @@
 import java.io.*;
 import java.net.*;
-import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class ContentServer {
 
@@ -33,11 +34,12 @@ public class ContentServer {
 
             // Send PUT request with JSON data
             out.println("PUT /weather.json HTTP/1.1");
+            out.println("Host: " + server); // Optional but good practice
             out.println("Content-Type: application/json");
             out.println("Lamport-Clock: " + lamportClock.getTime());
             out.println("Content-Length: " + jsonData.length());
-            out.println();
-            out.println(jsonData);
+            out.println();  // Important: A blank line between headers and the actual JSON data
+            out.println(jsonData); // Now send the JSON data
             out.flush();
 
             // Read and display the response from the server
@@ -48,26 +50,14 @@ public class ContentServer {
         }
     }
 
-    // Reads weather data dynamically from the file with more robust parsing
+    // Reads weather data dynamically from the file in one go (improved reading method)
     private static String readWeatherDataFromFile(String filepath) {
-        StringBuilder jsonData = new StringBuilder();
-        try (Scanner scanner = new Scanner(new File(filepath))) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine().trim();
-
-                // Skip empty or malformed lines
-                if (line.isEmpty() || !line.contains(":")) {
-                    System.err.println("Skipping malformed or empty line in file: " + line);
-                    continue;
-                }
-
-                jsonData.append(line).append("\n");
-            }
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found: " + filepath);
+        try {
+            return new String(Files.readAllBytes(Paths.get(filepath))); // Read the entire file content
+        } catch (IOException e) {
+            System.err.println("Error reading weather data file: " + e.getMessage());
             return null;
         }
-        return jsonData.toString();
     }
 
     // Handles the server's response, logging errors if they occur

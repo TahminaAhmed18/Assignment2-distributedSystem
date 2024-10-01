@@ -6,7 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 public class AggregationServer {
-    private static final String STORAGE_FILE = "weather_data_store.txt";
+    private static final String STORAGE_FILE = "File.json";
     private static Map<String, WeatherData> weatherDataStore = new ConcurrentHashMap<>();
 
     // Adding an identifier for LamportClock
@@ -57,6 +57,20 @@ public class AggregationServer {
                  PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
 
                 String request = in.readLine();
+                String line;
+                String method= "";
+                if(request.startsWith("PUT"))
+                    method ="PUT";
+                else if (request.startsWith("GET")) {
+                    method ="GET";
+                }
+                else{
+                    method ="";
+                }
+
+                while ((line = in.readLine()) != null && !line.isEmpty()) {
+                    System.out.println(line);
+                }
                 lamportClock.update();
 
                 if (request.startsWith("PUT")) {
@@ -94,8 +108,13 @@ public class AggregationServer {
                     return;
                 }
 
-                // Parse the JSON data into a WeatherData object
-                WeatherData weatherData = gson.fromJson(jsonData.toString(), WeatherData.class);
+                // Log the raw data received for debugging
+                System.out.println("Raw data received: " + jsonData.toString());
+
+                // Manually parse the JSON data into a WeatherData object
+                WeatherData weatherData = new WeatherData();
+                weatherData.fromJson(jsonData.toString());
+                System.out.println(weatherData.toString());
 
                 if (weatherData == null || weatherData.getId() == null) {
                     out.println("HTTP/1.1 400 Bad Request");
@@ -119,14 +138,13 @@ public class AggregationServer {
                 }
                 out.println();
 
-            } catch (JsonSyntaxException e) {
+            } catch (IOException e) {
                 out.println("HTTP/1.1 500 Internal Server Error");
                 out.println();
-                System.err.println("JSON parsing error: " + e.getMessage());
-            } catch (IOException e) {
                 System.err.println("Error processing PUT request: " + e.getMessage());
             }
         }
+
 
         private void handleGetRequest(PrintWriter out) {
             out.println("HTTP/1.1 200 OK");
@@ -134,11 +152,11 @@ public class AggregationServer {
             out.println();
 
             String jsonResponse = gson.toJson(weatherDataStore.values());
-            out.println(jsonResponse);
+            out.println(jsonResponse.toString());
         }
     }
 
-    private static void expireOldData() {
+    static void expireOldData() {
         long currentTime = System.currentTimeMillis();
         weatherDataStore.entrySet().removeIf(entry -> currentTime - entry.getValue().getTimestamp() > EXPIRATION_TIME_MS);
     }
@@ -154,7 +172,7 @@ public class AggregationServer {
         }
     }
 
-    private static void loadWeatherDataFromFile() {
+    static void loadWeatherDataFromFile() {
         File file = new File(STORAGE_FILE);
         if (!file.exists()) {
             return;
@@ -173,36 +191,43 @@ public class AggregationServer {
         }
     }
 
-    static class WeatherData {
-        private String id;
-        private String data;
-        private int lamportTimestamp;
-        private long timestamp;
-
-        public WeatherData(String data, int lamportTimestamp, long timestamp) {
-            // Extract the "id" field from the "data" string using the JSON parser
-            this.id = extractIdFromData(data);
-            this.data = data;
-            this.lamportTimestamp = lamportTimestamp;
-            this.timestamp = timestamp;
-        }
-
-        public String getId() {
-            return id;
-        }
-
-        public long getTimestamp() {
-            return timestamp;
-        }
-
-        @Override
-        public String toString() {
-            return data;
-        }
-
-        private String extractIdFromData(String data) {
-            WeatherData parsedData = gson.fromJson(data, WeatherData.class);
-            return parsedData.getId();
-        }
-    }
+//    static class WeatherData {
+//        private String id;
+//        private String data;
+//        private int lamportTimestamp;
+//        private long timestamp;
+//
+////        public WeatherData(String data, int lamportTimestamp, long timestamp) {
+////            // Extract the "id" field from the "data" string using the JSON parser
+////            this.id = extractIdFromData(data);
+////            this.data = data;
+////            this.lamportTimestamp = lamportTimestamp;
+////            this.timestamp = timestamp;
+////        }
+//
+////        public static WeatherData fromJson(String string) {
+////            return null;
+////        }
+//
+//
+//        public String getId() {
+//            return id;
+//        }
+//
+//        public long getTimestamp() {
+//            return timestamp;
+//        }
+//
+//        @Override
+//        public String toString() {
+//            return data;
+//        }
+//
+//        private String extractIdFromData(String data) {
+//            WeatherData parsedData = gson.fromJson(data, WeatherData.class);
+//            return parsedData.getId();
+//        }
+//
+//
+//    }
 }

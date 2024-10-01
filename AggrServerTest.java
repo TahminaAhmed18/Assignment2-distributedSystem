@@ -9,44 +9,10 @@ import java.io.PrintWriter;
 import java.net.ConnectException;
 import java.net.Socket;
 
-public class TestAggregationServer {
+public class AggrServerTest {
 
     @Test
-    public void testPutRequest() {
-        String server = "localhost";
-        int port = 4567;
-        String jsonData = "{\n" +
-                "\"id\": \"TestID\",\n" +
-                "\"name\": \"TestLocation\",\n" +
-                "\"air_temp\": 20.0\n" +
-                "}";
-
-        try (Socket socket = new Socket(server, port);
-             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
-
-            // Send PUT request
-            out.println("PUT /weather.json HTTP/1.1");
-            out.println("Host: " + server);
-            out.println("Content-Type: application/json");
-            out.println("Content-Length: " + jsonData.length());
-            out.println();
-            out.println(jsonData);
-            out.flush();
-
-            // Read and display response
-            String responseLine;
-            while ((responseLine = in.readLine()) != null) {
-                System.out.println(responseLine);
-            }
-
-        } catch (IOException e) {
-            System.err.println("Error sending PUT request: " + e.getMessage());
-        }
-    }
-
-    @Test
-    public void testGetClient() {
+    public void getClient() {
         String server = "localhost";
         int port = 4567;
 
@@ -81,19 +47,12 @@ public class TestAggregationServer {
                 }
             }
 
-            // Handle different status codes
-            if (statusCode == 400) {
-                System.out.println("Error: 400 Bad Request - The server could not understand the request.");
-                return;
-            } else if (statusCode == 500) {
-                System.out.println("Error: 500 Internal Server Error - The server encountered an unexpected condition.");
-                return;
-            } else if (statusCode != 200) {
+            // Check if the status code and content type are correct
+            if (statusCode != 200) {
                 System.out.println("Error: Unexpected response code " + statusCode);
                 return;
             }
 
-            // Read the body of the response if it is JSON
             if (isJson) {
                 StringBuilder jsonResponse = new StringBuilder();
                 String bodyLine;
@@ -101,11 +60,13 @@ public class TestAggregationServer {
                     jsonResponse.append(bodyLine);
                 }
 
-                // Parse the JSON response using GSON
+                // Print the raw JSON response to see what is returned
+                System.out.println("Raw JSON Response: " + jsonResponse.toString());
+
+                // Parse and display the weather data
                 Gson gson = new Gson();
                 GETClient.WeatherData[] weatherDataArray = gson.fromJson(jsonResponse.toString(), GETClient.WeatherData[].class);
 
-                // Display the weather data
                 System.out.println("Weather Data:");
                 for (GETClient.WeatherData weatherData : weatherDataArray) {
                     System.out.println("ID: " + weatherData.id);
@@ -132,9 +93,10 @@ public class TestAggregationServer {
         }
     }
 
+
     @Test
     public void testMultipleConcurrentClients() throws InterruptedException {
-        Runnable clientTask = this::testGetClient;
+        Runnable clientTask = this::getClient;
 
         // Create multiple threads (clients) and execute them concurrently
         Thread client1 = new Thread(clientTask);
