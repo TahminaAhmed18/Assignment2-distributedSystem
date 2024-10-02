@@ -58,14 +58,13 @@ public class AggregationServer {
 
                 String request = in.readLine();
                 String line;
-                String method= "";
-                if(request.startsWith("PUT"))
-                    method ="PUT";
+                String method = "";
+                if (request.startsWith("PUT"))
+                    method = "PUT";
                 else if (request.startsWith("GET")) {
-                    method ="GET";
-                }
-                else{
-                    method ="";
+                    method = "GET";
+                } else {
+                    method = "";
                 }
 
                 while ((line = in.readLine()) != null && !line.isEmpty()) {
@@ -191,43 +190,4 @@ public class AggregationServer {
         }
     }
 
-//    static class WeatherData {
-//        private String id;
-//        private String data;
-//        private int lamportTimestamp;
-//        private long timestamp;
-//
-////        public WeatherData(String data, int lamportTimestamp, long timestamp) {
-////            // Extract the "id" field from the "data" string using the JSON parser
-////            this.id = extractIdFromData(data);
-////            this.data = data;
-////            this.lamportTimestamp = lamportTimestamp;
-////            this.timestamp = timestamp;
-////        }
-//
-////        public static WeatherData fromJson(String string) {
-////            return null;
-////        }
-//
-//
-//        public String getId() {
-//            return id;
-//        }
-//
-//        public long getTimestamp() {
-//            return timestamp;
-//        }
-//
-//        @Override
-//        public String toString() {
-//            return data;
-//        }
-//
-//        private String extractIdFromData(String data) {
-//            WeatherData parsedData = gson.fromJson(data, WeatherData.class);
-//            return parsedData.getId();
-//        }
-//
-//
-//    }
 }
