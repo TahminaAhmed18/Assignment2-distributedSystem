@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f3b7e9-8a82-4600-a50e-73531629df6c" name="Changes" comment="manually handle the json file">
+    <list default="true" id="45f3b7e9-8a82-4600-a50e-73531629df6c" name="Changes" comment="AggregationServer put">
       <change beforePath="$PROJECT_DIR$/AggregationServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/AggregationServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,49 +47,57 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AggregationServer.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ContentServer.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GETClient.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestLamportClock.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;JUnit.AggrServerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AggrServerTest.test.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AggrServerTest.testMultipleConcurrentClients.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestAggregationServer.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestAggregationServer.testMultipleConcurrentClients.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/tahmi/Downloads/junit-jupiter-engine-5.11.1.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31170663&quot;,
-    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AggregationServer (1).executor": "Run",
+    "Application.AggregationServer.executor": "Coverage",
+    "Application.ContentServer.executor": "Run",
+    "Application.GETClient.executor": "Run",
+    "Application.TestLamportClock.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "true",
+    "JUnit.AggrServerTest.executor": "Run",
+    "JUnit.AggrServerTest.test.executor": "Run",
+    "JUnit.AggrServerTest.testMultipleConcurrentClients.executor": "Run",
+    "JUnit.TestAggregationServer.executor": "Run",
+    "JUnit.TestAggregationServer.testMultipleConcurrentClients.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "newBranch",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/tahmi/Downloads/junit-jupiter-engine-5.11.1.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31170663",
+    "settings.build.tools.auto.reload": "ALL",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;JAVA&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "JAVA"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\tahmi\IdeaProjects\25_08_2024\Assignment2-distributedSystem" />
     </key>
   </component>
   <component name="RunManager" selected="Application.AggregationServer">
+    <configuration name="AggregationServer (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AggregationServer" />
+      <module name="Assignment2-distributedSystem" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AggregationServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AggregationServer" />
       <module name="Assignment2-distributedSystem" />
@@ -113,15 +121,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AggrServerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Assignment2-distributedSystem" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AggrServerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TestAggregationServer" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="Assignment2-distributedSystem" />
       <option name="PACKAGE_NAME" value="" />
@@ -133,17 +132,17 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.AggregationServer (1)" />
       <item itemvalue="Application.ContentServer" />
       <item itemvalue="Application.GETClient" />
       <item itemvalue="Application.AggregationServer" />
-      <item itemvalue="JUnit.AggrServerTest" />
       <item itemvalue="JUnit.TestAggregationServer" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.AggregationServer" />
-        <item itemvalue="JUnit.AggrServerTest" />
         <item itemvalue="Application.GETClient" />
+        <item itemvalue="Application.AggregationServer (1)" />
         <item itemvalue="Application.ContentServer" />
         <item itemvalue="JUnit.TestAggregationServer" />
       </list>
@@ -171,7 +170,8 @@
       <workItem from="1727833926691" duration="3626000" />
       <workItem from="1727843437983" duration="2127000" />
       <workItem from="1727935977804" duration="2905000" />
-      <workItem from="1727938919509" duration="1736000" />
+      <workItem from="1727938919509" duration="9237000" />
+      <workItem from="1727955539991" duration="1860000" />
     </task>
     <servers />
   </component>
@@ -183,7 +183,8 @@
     <MESSAGE value="Dynamically reads weather data from a file and incorporates Lamport Clock synchronization as part of the payload or request headers." />
     <MESSAGE value="changes the weather text" />
     <MESSAGE value="manually handle the json file" />
-    <option name="LAST_COMMIT_MESSAGE" value="manually handle the json file" />
+    <MESSAGE value="AggregationServer put" />
+    <option name="LAST_COMMIT_MESSAGE" value="AggregationServer put" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
