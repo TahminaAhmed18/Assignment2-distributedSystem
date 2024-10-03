@@ -1,4 +1,4 @@
-                                                                           Weather Aggregation System - Assignment 2
+Weather Aggregation System - Assignment 2
 
 
 1. Project Structure
