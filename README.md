@@ -2,7 +2,7 @@
 
 
 1. Project Structure
-•	AggregationServer.java: The server that handles GET and PUT requests for weather data aggregation.
+•	AggregationServer.java: The server that handles GET and PUT requests for weather data aggregation..
 •	ContentServer.java: Sends PUT requests to upload weather data to the Aggregation Server.
 •	GETClient.java: Sends GET requests to retrieve weather data from the Aggregation Server.
 •	WeatherData.java: Stores weather data and includes a custom JSON parser.
