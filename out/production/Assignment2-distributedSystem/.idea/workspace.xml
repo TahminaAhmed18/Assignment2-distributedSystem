@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="45f3b7e9-8a82-4600-a50e-73531629df6c" name="Changes" comment="manually handle the json file">
+      <change beforePath="$PROJECT_DIR$/AggregationServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/AggregationServer.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportTestResults" outputFolder="$PROJECT_DIR$" userTempatePath="" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PATH_TO_GIT" value="https://github.com/TahminaAhmed18/Assignment2-distributedSystem.git" />
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;TahminaAhmed18&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/TahminaAhmed18/Assignment2-distributedSystem.git&quot;,
+    &quot;accountId&quot;: &quot;c7dd30d5-c8f4-458f-bd8f-9477cb0edb9f&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2mlqzIAGUQmK5gOiuNhn0htqjqh" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AggregationServer.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ContentServer.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GETClient.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestLamportClock.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;JUnit.AggrServerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AggrServerTest.test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AggrServerTest.testMultipleConcurrentClients.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestAggregationServer.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestAggregationServer.testMultipleConcurrentClients.executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/tahmi/Downloads/junit-jupiter-engine-5.11.1.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.31170663&quot;,
+    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;JAVA&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tahmi\IdeaProjects\25_08_2024\Assignment2-distributedSystem" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.AggregationServer">
+    <configuration name="AggregationServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AggregationServer" />
+      <module name="Assignment2-distributedSystem" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContentServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ContentServer" />
+      <module name="Assignment2-distributedSystem" />
+      <option name="PROGRAM_PARAMETERS" value="localhost 4567 &quot;$USER_HOME$/OneDrive/Desktop/Distributed System/Assignment2/weatherdata.json&quot; " />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GETClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GETClient" />
+      <module name="Assignment2-distributedSystem" />
+      <option name="PROGRAM_PARAMETERS" value="localhost 4567" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AggrServerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Assignment2-distributedSystem" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AggrServerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestAggregationServer" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="Assignment2-distributedSystem" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestAggregationServer" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.ContentServer" />
+      <item itemvalue="Application.GETClient" />
+      <item itemvalue="Application.AggregationServer" />
+      <item itemvalue="JUnit.AggrServerTest" />
+      <item itemvalue="JUnit.TestAggregationServer" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AggregationServer" />
+        <item itemvalue="JUnit.AggrServerTest" />
+        <item itemvalue="Application.GETClient" />
+        <item itemvalue="Application.ContentServer" />
+        <item itemvalue="JUnit.TestAggregationServer" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.387" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.387" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="45f3b7e9-8a82-4600-a50e-73531629df6c" name="Changes" comment="" />
+      <created>1727661771778</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727661771778</updated>
+      <workItem from="1727661773497" duration="20712000" />
+      <workItem from="1727688702402" duration="31000" />
+      <workItem from="1727744096809" duration="21127000" />
+      <workItem from="1727833926691" duration="3626000" />
+      <workItem from="1727843437983" duration="2127000" />
+      <workItem from="1727935977804" duration="2905000" />
+      <workItem from="1727938919509" duration="1736000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated AggregationServer with proper JSON handling, data persistence, and HTTP responses" />
+    <MESSAGE value="Dynamically reads weather data from a file and incorporates Lamport Clock synchronization as part of the payload or request headers." />
+    <MESSAGE value="changes the weather text" />
+    <MESSAGE value="manually handle the json file" />
+    <option name="LAST_COMMIT_MESSAGE" value="manually handle the json file" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/AggregationServer.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/AggregationServer.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Assignment2_distributedSystem$ContentServer.ic" NAME="ContentServer Coverage Results" MODIFIED="1727675642097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+  </component>
+</project>
