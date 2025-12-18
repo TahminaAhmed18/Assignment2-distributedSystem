@@ -1,5 +1,15 @@
-﻿/out/
-/out/
-/out/
-/out/
-/out/
+﻿# VSCode
+.vscode/
+
+# IntelliJ / JetBrains
+.idea/
+*.iml
+
+# Java build output
+out/
+target/
+*.class
+
+# OS files
+.DS_Store
+Thumbs.db
